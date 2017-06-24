@@ -1,0 +1,46 @@
+<html><head></head><body>
+<h1>URI Redirect redirection page</h1>
+<p id="$$_noparam" style="display:none">
+There was no GET parameter for &quot;redirect&quot;.<br/>
+See About page for syntax.
+</p>
+<p id="$$_redirecting" style="display:none">Redirecting...</p>
+<p id="$$_noload">JavaScript did not load.</p>
+<script>
+document.getElementById("$$_noload").style.display = "none";
+
+// http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+pUri = getParameterByName("uri");
+pHtml = getParameterByName("html");
+isNoParam = false;
+
+if (pHtml === null) {
+if (pUri === null) {
+isNoParam = true;
+} else {
+window.location.replace(pUri);
+}
+} else {
+window.location.replace("data:text/html," + pHtml);
+document.title = "HTML";
+}
+
+if (isNoParam === true) {
+    document.getElementById("$$_noparam").style.display = "block";
+}
+else
+{
+    document.getElementById("$$_redirecting").style.display = "block";
+}
+</script>
+</body></html>
