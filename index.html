@@ -1,19 +1,20 @@
-<h1>The Problem</h1>
+<h1>URI Redirect</h1>
+<h2>The Problem</h2>
 <p>Data URIs are a powerful way to embed entire resources (images, HTML, etc) in the link itself. For example, the link</p>
 <code>data:text/html,&lt;html&gt;&lt;body&gt;&lt;p&gt;Hello world!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</code>
 <p>displays an HTML page. Note that the HTML does not come from some external server, but from the link itself. Thus, you don't need a host to serve up HTML if you do it like this.</p>
 <p>However, such links are long and clunky. If one could use a URL shortener, things would be great!</p>
 <p>Unfortunately, URL shorteners do not accept Data URIs for security reasons.</p>
 
-<h1>The Solution</h1>
+<h2>The Solution</h2>
 <p>URI Redirect redirects requests from this webpage to any other page specified as a GET parameter.</p>
 <p>This tool works around the limitation of URL shorteners not accepting data URIs. For example, this will shorten properly, since this looks like a normal webpage to the shortener.</p>
 <code>https://sjhuang26.github.io/uri-redirect/r.html?uri=[[DATA URI]]</code>
 <p>However, the shortened link will in turn redirect to the data URI specified.</p>
 <p>Note: Data URIs (and thus the HTML) feature are not well supported in Internet Explorer.</p>
-<h1>Syntax</h1>
-<h2>Redirect to URI</h2>
+<h2>Syntax</h2>
+<h3>Redirect to URI</h3>
 <code>https://sjhuang26.github.io/uri-redirect/r.html?uri=[[URI]]</code>
-<h2>Redirect to HTML</h2>
+<h3>Redirect to HTML</h3>
 <p>This is just for convenience. It is just a URI redirect for <code>data:text/html,[[HTML]]</code>.</p>
 <code>https://sjhuang26.github.io/uri-redirect/r.html?html=[[HTML]]</code>
